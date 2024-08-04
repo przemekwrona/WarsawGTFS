@@ -23,5 +23,5 @@ jobs:
         run: docker build -t ${{ env.DOCKER_TAG }}:${{ env.DOCKER_VERSION }} .
 
       - name: Tag Image
-        run: docker tag ${{ env.DOCKER_TAG }}:${{ env.DOCKER_VERSION }} ${{secret.DOCKER_REGISTRY}}/${{ env.DOCKER_TAG }}:${{ env.DOCKER_VERSION }}
+        run: docker tag ${{ env.DOCKER_TAG }}:${{ env.DOCKER_VERSION }} ${{secrets.DOCKER_REGISTRY}}/${{ env.DOCKER_TAG }}:${{ env.DOCKER_VERSION }}
 

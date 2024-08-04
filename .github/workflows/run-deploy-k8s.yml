@@ -1,0 +1,23 @@
+name: Deploy K8S Cluster
+
+on:
+  workflow_dispatch:
+
+env:
+  DOCKER_TAG: public-transport/gtfs-warsaw
+  DOCKER_VERSION: 1.0.0
+
+jobs:
+  k8s:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Save DigitalOcean kubeconfig
+        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.K8S_CLUSTER }}

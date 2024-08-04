@@ -25,3 +25,6 @@ jobs:
       - name: Tag Image
         run: docker tag ${{ env.DOCKER_TAG }}:${{ env.DOCKER_VERSION }} ${{secrets.DOCKER_REGISTRY}}/${{ env.DOCKER_TAG }}:${{ env.DOCKER_VERSION }}
 
+      - name: Log in to DigitalOcean Container Registry with short-lived credentials
+        run: doctl registry login --expiry-seconds 1200
+

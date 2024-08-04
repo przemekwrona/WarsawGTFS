@@ -14,3 +14,6 @@ jobs:
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Build docker
+        run: docker build -t public-transport/gtfs-warsaw:1.0.0 .

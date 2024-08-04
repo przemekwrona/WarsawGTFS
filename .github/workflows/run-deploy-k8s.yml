@@ -21,3 +21,6 @@ jobs:
 
       - name: Save DigitalOcean kubeconfig
         run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.K8S_CLUSTER }}
+
+      - name: Apply Cron Job
+        run: kubectl apply -f .k8s/config/cron-job.yaml
